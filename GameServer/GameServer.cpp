@@ -1,5 +1,6 @@
 ﻿#include "pch.h"
 #include <iostream>
+#include <memory>
 #include "ConcurrentQueue.h"
 #include "ConcurrentStack.h"
 
@@ -23,16 +24,22 @@ void Pop()
 {
     while (true)
     {
-        int32 data = 0;
-        if (s.TryPop(data))
+        auto data = s.TryPop();
+        if (data)
         {
-            cout << data << endl;
+			cout << *data << endl;
         }
     }
 }
 
 int main()
 {
+    shared_ptr<int32> ptr;
+    const bool bIsLockFree = std::atomic_is_lock_free(&ptr);
+
+    // !!! 머신에 따라 다르겠지만, 대부분의 머신에서 shared_ptr 은 lock free 방식으로 동작하지 않는다.
+    // !!! 가짜 Lock Free 인 상태이다!
+
     thread t1(Push);
     thread t2(Pop);
     thread t3(Pop);
