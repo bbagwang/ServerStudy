@@ -13,7 +13,9 @@ void Push()
         int32 value = rand() % 100;
         s.Push(value);
 
-        //this_thread::sleep_for(10ms);
+        //!!! sleep 이 없이, 너무 빠르게 Push 하면 Pop이 느려서 데이터가 쌓이게 된다.
+        //!!! 그래서 Memory Leak 가 발생할 수 있음. 다만, 이 경우는 일반적이지 않은 경우라고 가정해야함.
+        this_thread::sleep_for(1ms);
     }
 }
 
