@@ -5,19 +5,19 @@
 /* Reader-Writer Spin Lock */
 
 /*
-»óÀ§ 16 Bit ´Â Writer Count
-ÇÏÀ§ 16 Bit ´Â Reader Count
+ìƒìœ„ 16 Bit ëŠ” Writer Count
+í•˜ìœ„ 16 Bit ëŠ” Reader Count
 [WWWWWWWW][WWWWWWWW][RRRRRRRR][RRRRRRRR]
 W : Write Flag (Exclusive Lock Owner ThreadId)
 R : Read Flag (Shared Lock Count)
 
-Á¤Ã¥
+ì •ì±…
 
-µ¿ÀÏ ½º·¹µå°¡
-WriteLock Àâ°í WriteLock (O : °¡´É)
-WriteLock Àâ°í ReadLock (O : °¡´É)
-ReadLock Àâ°í ReadLock (O : °¡´É)
-ReadLock Àâ°í WriteLock (X : ºÒ°¡´É)
+ë™ì¼ ìŠ¤ë ˆë“œê°€
+WriteLock ì¡ê³  WriteLock (O : ê°€ëŠ¥)
+WriteLock ì¡ê³  ReadLock (O : ê°€ëŠ¥)
+ReadLock ì¡ê³  ReadLock (O : ê°€ëŠ¥)
+ReadLock ì¡ê³  WriteLock (X : ë¶ˆê°€ëŠ¥)
 */
 
 class Lock

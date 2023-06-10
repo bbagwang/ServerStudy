@@ -6,7 +6,7 @@
 
 ThreadManager::ThreadManager()
 {
-	//Main Thread �ʱ�ȭ
+	//Main Thread 초기화
 	InitTLS();
 }
 

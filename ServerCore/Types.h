@@ -12,7 +12,7 @@ using uint16 = unsigned __int16;
 using uint32 = unsigned __int32;
 using uint64 = unsigned __int64;
 
-// ÃßÈÄ ´Ù¸¥ °ÍÀ¸·Î »ç¿ëÇÏ°í ½Í´Ù¸é ¹Ù·Î °¥¾Æ ³¢¿ï ¼ö ÀÖµµ·Ï aliasing.
+// ì¶”í›„ ë‹¤ë¥¸ ê²ƒìœ¼ë¡œ ì‚¬ìš©í•˜ê³  ì‹¶ë‹¤ë©´ ë°”ë¡œ ê°ˆì•„ ë¼ìš¸ ìˆ˜ ìˆë„ë¡ aliasing.
 template<typename T>
 using Atomic = std::atomic<T>;
 using Mutex = std::mutex;
