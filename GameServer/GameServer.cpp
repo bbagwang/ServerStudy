@@ -1,8 +1,5 @@
 ﻿#include "pch.h"
-#include "CorePch.h"
 #include "ThreadManager.h"
-
-CoreGlobal Core;
 
 void ThreadMain()
 {
