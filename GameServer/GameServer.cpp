@@ -41,10 +41,12 @@ int main()
     // !!! 가짜 Lock Free 인 상태이다!
 
     thread t1(Push);
-    thread t2(Pop);
+    thread t2(Push);
     thread t3(Pop);
+    thread t4(Pop);
 
     t1.join();
     t2.join();
     t3.join();
+    t4.join();
 }
