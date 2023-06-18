@@ -32,11 +32,11 @@ class Lock
 
 public:
 
-	void WriteLock();
-	void WriteUnlock();
+	void WriteLock(const char* name);
+	void WriteUnlock(const char* name);
 
-	void ReadLock();
-	void ReadUnlock();
+	void ReadLock(const char* name);
+	void ReadUnlock(const char* name);
 
 private:
 	Atomic<uint32> _lockFlag = EMPTY_FLAG;
@@ -49,21 +49,25 @@ private:
 class ReadLockGuard
 {
 public:
-ReadLockGuard(Lock& lock) : _lock(lock) { _lock.ReadLock(); }
-	~ReadLockGuard() { _lock.ReadUnlock(); }
+ReadLockGuard(Lock& lock, const char* name)
+		: _lock(lock), _name(name) { _lock.ReadLock(_name); }
+	~ReadLockGuard() { _lock.ReadUnlock(_name); }
 
 private:
 	Lock& _lock;
+	const char* _name;
 };
 
 class WriteLockGuard
 {
 public:
-	WriteLockGuard(Lock& lock) : _lock(lock) { _lock.WriteLock(); }
-	~WriteLockGuard() { _lock.WriteUnlock(); }
+	WriteLockGuard(Lock& lock, const char* name)
+		: _lock(lock), _name(name) { _lock.WriteLock(_name); }
+	~WriteLockGuard() { _lock.WriteUnlock(_name); }
 
 private:
 	Lock& _lock;
+	const char* _name;
 };
 
 #pragma endregion LockGuard
